@@ -25,7 +25,8 @@
 
 ### 第零章：預備知識
 
-- [ ] [使用 conda 創建一個環境]()
+- [x] [使用 conda 創建一個環境](./ch0/create-new-environment-using-conda.md)
+- [ ] [一个显得很麻烦的过程：配置GPU]()
 - [ ] [數據操作]()
 - [ ] [自動求梯度]()
 
