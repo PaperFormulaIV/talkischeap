@@ -69,19 +69,36 @@ conda create -n mxnet python=3.8
 
   更多的特点请参考[mx-net官网](https://mxnet.apache.org/versions/1.7.0/)。你也可以看到[mx-net的开源项目仓库](https://github.com/apache/incubator-mxnet)
 
-- 使用conda安装
+- CPU和GPU版本？
+
+  像mx-net、tensorflow、pytorch等框架都会有CPU版本和GPU版本。GPU是图形处理器，在矩阵运算性能上要优于CPU。使用GPU能够使你的框架加速。
+
+  选择版本时，应注意自己使用的计算机是否有一块GPU，如果有的话，那么推荐安装GPU版本。请注意，当你的电脑装有显卡时，将同时支持CPU和GPU版本。当你的电脑没有显卡时，将只支持CPU版本。
+
+  请注意，在一个虚拟环境下你只能从CPU版本和GPU版本中二选一，它们并不能在同个环境下共存。
+
+  选择安装CPU版本
 
   ```bash
-  
+  pip install mxnet
   ```
 
-- 使用pip安装
+  选择安装GPU版本
 
-### 为什么使用conda的时候要使用pip？
+  `请注意，安装GPU版本需指定相应的CUDA型号。通常情况下，你需要在电脑上安装CUDA和cudnn。如果需要帮助，请查看`[`关于CUDA`]()
 
-- 在同个环境下，pip和conda不会冲突
+  ```bash
+  # 当你的cuda版本是10.1时
+  pip install pip install mxnet-cu101
+  ```
 
-### pip换源
+  其中，后面的-cu101是指对应cuda版本为10.1。如果你的cuda版本是10.2，那么你应该将它替换为-cu102，以此类推。其他情况请参考[mxnet官网](https://mxnet.apache.org/)获取确切的包名称。
+
+### 有conda为什么要使用pip？
+
+conda除了是一个虚拟环境管理器之外，也是一个包管理器。也就是说，你可以通过conda安装这些包。但是为什么上面使用了pip？放心，conda和pip并不会冲突。它们可以同时存在。实际上，有的时候通过pip安装和通过conda安装是等效的。当然也有的时候是不等效的。不过这在大多数情况下影响不大。总之目前你可以认为通过它们两个安装某个包是一样的，有的区别你会在以后的时间里慢慢明白。对我而言，我觉得单纯使用conda作为虚拟环境管理并使用pip安装一些包体验十分良好。并且，mxnet官网提供的安装指南使用了pip。
+
+### pip切换源
 
 和conda同理，**将pip切换至国内源可以提高包的下载速度**。你可以从下面的命令行中选择一条来执行。
 
