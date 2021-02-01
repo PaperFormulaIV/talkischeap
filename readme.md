@@ -28,7 +28,7 @@
 - [x] [使用 conda 創建一個環境](./ch0/create-new-environment-using-conda.md)
 - [ ] [一个显得很麻烦的过程：配置GPU]()
 - [x] [數據操作](./ch0/operate-on-data.md)
-- [ ] [自動求梯度]()
+- [x] [自動求梯度](./ch0/automatic-gradient.md)
 
 ### 第一章：深度學習基礎
 
