@@ -430,3 +430,41 @@ id(X) == before
 ```
 True
 ```
+
+
+
+## NDArray和NumPy相互转换
+
+我们可以通过`array`函数和`asnumpy`函数令数据在`NDArray`和NumPy格式之间相互变换。下面将NumPy实例变换成`NDArray`实例。
+
+```python
+import numpy as np
+
+P = np.ones((2, 3))
+D = nd.array(P)
+D
+```
+
+避讳看到这样的输出：
+
+```
+[[1. 1. 1.]
+ [1. 1. 1.]]
+<NDArray 2x3 @cpu(0)>
+```
+
+再将`NDArray`实例变换成NumPy实例。
+
+```python
+D.asnumpy()
+```
+
+你会看到这样的输出：
+
+```
+array([[1., 1., 1.],
+       [1., 1., 1.]], dtype=float32)
+```
+
+在使用一些工具比如`matplotlib`时，可能需要讲运算过程中产生的`NDArray`转换成`NumPy`再传递给工具。
+
