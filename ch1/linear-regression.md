@@ -78,7 +78,7 @@ $$
 
 在深度学习中，我们可以使用神经网络图直观地表现模型结构。为了更清晰地展示线性回归作为神经网络的结构，图3.1使用神经网络图表示本节中介绍的线性回归模型。神经网络图隐去了模型参数权重和偏差。
 
-<center>    <img src="./src/single-layer-nn.svg">    <br>    <div style="border-bottom: 1px solid #d9d9d9;    display: inline-block;padding: 2px;">图1：线性回归是一个单层的神经网络</div> </center>
+<center>    <img src="src/linear-regression/single-layer-nn.svg">    <br>    <div style="border-bottom: 1px solid #d9d9d9;    display: inline-block;padding: 2px;">图1：线性回归是一个单层的神经网络</div> </center>
 
 在图3.1所示的神经网络中，输入分别为$x_1$和$x_2$，因此输入层的输入个数为2。输入个数也叫特征数或特征向量维度。图1中网络的输出为$o$，输出层的输出个数为1。需要注意的是，我们直接将图1中神经网络的输出$o$作为线性回归的输出，即$\hat{y} = o$。由于输入层并不涉及计算，按照惯例，图1所示的神经网络的层数为1。所以，线性回归是一个单层神经网络。输出层中负责计算$o$的单元又叫神经元。在线性回归中，$o$的计算依赖于$x_1$和$x_2$。也就是说，输出层中的神经元和输入层中各个输入完全连接。因此，这里的输出层又叫全连接层（fully-connected layer）或稠密层（dense layer）。
 
