@@ -33,7 +33,7 @@
 ### 第一章：深度學習基礎
 
 - [x] [線性回歸](./ch1/linear-regression.md) | [代碼實現](./ch1/linear-regression-code.md)
-- [ ] [softmax 回歸]() | [代碼實現]()
+- [x] [softmax 回歸](./ch1/softmax-regression.md) | [代碼實現](./ch1/softmax-regression-code.md)
 - [ ] [多層感知機]() | [代碼實現]()
 - [ ] [模型選擇，欠擬合和過擬合]()
 - [ ] [權重衰減]()
