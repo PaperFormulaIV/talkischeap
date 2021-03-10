@@ -1,4 +1,4 @@
-# 常见的名词和大致释义
+# 机器学习(?)术语表
 
 ## 这里已经包含了的名词
 
@@ -174,8 +174,9 @@
 ### 字母 O
 
 - 输出（输出数据，output，output dataset）
-
 - 过拟合（overfitting）
+- one-hot编码（onehot，one hot encoding）
+- 
 
 ---
 
@@ -259,3 +260,24 @@
 
 1. 标准化和中心化的区别：标准化是原始分数减去平均数然后除以标准差，中心化是原始分数减去平均数。 所以一般流程为先中心化再标准化。
 2. 归一化和标准化的区别：归一化是将样本的特征值转换到同一量纲下把数据映射到[0,1]或者[-1, 1]区间内，仅由变量的极值决定，因区间放缩法是归一化的一种。标准化是依照特征矩阵的列处理数据，其通过求 z-score 的方法，转换为标准正态分布，和整体样本分布相关，每个样本点都能对标准化产生影响。它们的相同点在于都能取消由于量纲不同引起的误差；都是一种线性变换，都是对向量 X 按照比例压缩再进行平移。
+
+
+
+---
+
+
+
+# 前方正在施工
+
+- 上采样（up sampling）
+- 下采样（降采样，down sampling,sub sampling）
+- 梯度弥散
+- 梯度爆炸
+- 梯度消失
+- 特征缩放
+- 编码器（encoder）
+- 解码器（decoder）
+- 循环神经网络（RNN，recursive neural network）
+- 长短期记忆（LSTM，long short term memory）
+- 前馈神经网络（feedforward neural network）
+- 多层感知机（人工神经网络，MLP，multilayer perceptron，ANN，artificial neural network）/
