@@ -83,3 +83,98 @@ $$
 $$
 sigmoid函数在早期的神经网络中较为普遍，但它目前逐渐被更简单的ReLU函数取代。在后面“循环神经网络”一章中我们会介绍如何利用它值域在0到1之间这一特性来控制信息在神经网络中的流动。下面绘制了sigmoid函数。当输入接近0时，sigmoid函数接近线性变换。
 
+我们绘制sigmoid的函数图像：
+
+```python
+import tensorflow as tf
+import matplotlib.pyplot as plt
+
+x = tf.constant(range(-20, 20, 1))
+x = tf.cast(x,dtype=tf.float32)
+out = tf.nn.sigmoid(x)
+plt.xlabel("x")
+plt.ylabel("reLU x")
+plt.plot(x, out)
+plt.show()
+```
+
+这段代码绘制的图像如下图：
+
+![](src/multilayer-perceptron/sigmoid.png)
+
+依据链式法则，sigmoid函数的导数为：
+$$
+\text{sigmoid}'(x) = \text{sigmoid}(x)\left(1-\text{sigmoid}(x)\right)
+$$
+下面绘制了sigmoid函数的导数。当输入为0时，sigmoid函数的导数达到最大值0.25；当输入越偏离0时，sigmoid函数的导数越接近0。
+
+```python
+x = tf.Variable(tf.cast(x, dtype=tf.float32))
+with tf.GradientTape() as tape:
+    y = tf.nn.sigmoid(x)
+plt.xlabel("x")
+plt.ylabel("(reLU x)\'")
+grad = tape.gradient(y, x)
+plt.plot(x.numpy(), grad)
+plt.show()
+```
+
+![](src/multilayer-perceptron/sigmoidgrad.png)
+
+
+
+### tanh函数
+
+tanh（双曲正切）函数可以将元素的值变换到-1和1之间：
+$$
+\text{tanh}(x) = \frac{1 - \exp(-2x)}{1 + \exp(-2x)}.
+$$
+我们接着绘制tanh函数。当输入接近0时，tanh函数接近线性变换。虽然该函数的形状和sigmoid函数的形状很像，但tanh函数在坐标系的原点上对称。
+
+这段代码将会打印tanh的图像：
+
+```python
+import tensorflow as tf
+import matplotlib.pyplot as plt
+
+x = tf.constant(range(-20, 20, 1))
+x = tf.cast(x,dtype=tf.float32)
+out = tf.nn.tanh(x)
+plt.xlabel("x")
+plt.ylabel("reLU x")
+plt.plot(x, out)
+plt.show()
+```
+
+![](src/multilayer-perceptron/tanh.png)
+
+老规矩打印tanh梯度的图像：
+
+```python
+x = tf.Variable(tf.cast(x, dtype=tf.float32))
+with tf.GradientTape() as tape:
+    y = tf.nn.tanh(x)
+plt.xlabel("x")
+plt.ylabel("(reLU x)\'")
+grad = tape.gradient(y, x)
+plt.plot(x.numpy(), grad)
+plt.show()
+```
+
+![](src/multilayer-perceptron/tahngard.png)
+
+
+
+## 回到多层感知机
+
+多层感知机就是含有至少一个隐藏层的由全连接层组成的神经网络，且每个隐藏层的输出通过激活函数进行变换。多层感知机的层数和各隐藏层中隐藏单元个数都是超参数。以单隐藏层为例并沿用本节之前定义的符号，多层感知机按以下方式计算输出：
+$$
+\begin{split}\begin{aligned}
+\boldsymbol{H} &= \phi(\boldsymbol{X} \boldsymbol{W}_h + \boldsymbol{b}_h),\\
+\boldsymbol{O} &= \boldsymbol{H} \boldsymbol{W}_o + \boldsymbol{b}_o,
+\end{aligned}\end{split}
+$$
+其中$\phi$表示激活函数。在分类问题中，我们可以对输出$\boldsymbol{O}$做softmax运算，并使用softmax回归中的交叉熵损失函数。 在回归问题中，我们将输出层的输出个数设为1，并将输出$\boldsymbol{O}$直接提供给线性回归中使用的平方损失函数。
+
+- 多层感知机在输出层与输入层之间加入了一个或多个全连接隐藏层，并通过激活函数对隐藏层输出进行变换。
+- 常用的激活函数包括ReLU函数、sigmoid函数和tanh函数。
